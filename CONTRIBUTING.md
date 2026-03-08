@@ -11,18 +11,19 @@ Thanks for your interest in contributing! Here's how to get started.
    cd medix
    ```
 
-2. **Create a virtual environment** and install in editable mode:
+2. **Create a virtual environment** and install with dev dependencies:
 
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
-   pip install -e .
+   pip install -e ".[dev]"
    ```
 
-3. **Verify** the CLI runs:
+3. **Verify** the CLI runs and tests pass:
 
    ```bash
    medix --version
+   pytest
    ```
 
 ## Making Changes
@@ -33,7 +34,19 @@ Thanks for your interest in contributing! Here's how to get started.
    git checkout -b feat/your-feature
    ```
 
-2. Make your changes and test them manually with real media files.
+2. Make your changes and ensure tests pass:
+
+   ```bash
+   pytest                          # run the full test suite
+   ruff check medix/ tests/        # lint
+   ruff format --check medix/ tests/  # format check
+   ```
+
+   Use `--dry-run` to verify CLI behavior without needing real media files:
+
+   ```bash
+   medix /path/to/any/media --dry-run
+   ```
 
 3. Commit using [Conventional Commits](https://www.conventionalcommits.org/) — this drives automated releases:
 
@@ -58,8 +71,10 @@ Thanks for your interest in contributing! Here's how to get started.
 
 - Keep PRs focused — one feature or fix per PR.
 - Describe **what** changed and **why** in the PR body.
+- All tests must pass (`pytest`) and code must be formatted (`ruff format`).
 - Ensure the CLI still works end-to-end (single file and directory conversion).
 - Update `README.md` if you add new features or change CLI usage.
+- Add tests for new functionality.
 
 ## Reporting Issues
 
@@ -72,6 +87,7 @@ Thanks for your interest in contributing! Here's how to get started.
 - Follow existing patterns in the codebase.
 - Keep functions focused and well-named.
 - Avoid unnecessary comments — code should be self-explanatory.
+- Use [ruff](https://docs.astral.sh/ruff/) for linting and formatting (`ruff check` and `ruff format`).
 
 ## License
 
