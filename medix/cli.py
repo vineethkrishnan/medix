@@ -26,6 +26,7 @@ from . import __version__
 from .converter import (
     ConvertSettings,
     MediaInfo,
+    build_command,
     convert_file,
     probe_file,
 )
@@ -358,11 +359,17 @@ def display_settings_summary(settings: ConvertSettings, file_count: int) -> None
     "-o", "--output", type=click.Path(), default=None, help="Output directory."
 )
 @click.option("-r", "--recursive", is_flag=True, help="Recurse into subdirectories.")
+@click.option(
+    "-n",
+    "--dry-run",
+    is_flag=True,
+    help="Show what would be done without converting.",
+)
 @click.version_option(__version__, prog_name="medix")
-def main(path: str, output: Optional[str], recursive: bool) -> None:
+def main(path: str, output: Optional[str], recursive: bool, dry_run: bool) -> None:
     """Medix - Convert media files between formats with style."""
     try:
-        _run(path, output, recursive)
+        _run(path, output, recursive, dry_run=dry_run)
     except KeyboardInterrupt:
         console.print("\n[yellow]Interrupted.[/yellow]")
         sys.exit(130)
@@ -432,8 +439,15 @@ def _ensure_prerequisites() -> bool:
     return True
 
 
-def _run(path: str, output: Optional[str], recursive: bool) -> None:
+def _run(
+    path: str, output: Optional[str], recursive: bool, *, dry_run: bool = False
+) -> None:
     display_banner()
+
+    if dry_run:
+        console.print(
+            "  [bright_yellow][DRY RUN][/bright_yellow] No files will be converted.\n"
+        )
 
     if not _ensure_prerequisites():
         sys.exit(1)
@@ -505,6 +519,12 @@ def _run(path: str, output: Optional[str], recursive: bool) -> None:
     display_settings_summary(settings, len(files_info))
     console.print(f"  [dim]Output directory:[/dim] {output_dir}\n")
 
+    if dry_run:
+        _display_dry_run_plan(
+            files_info, settings, fmt_def, output_dir, input_path, recursive
+        )
+        return
+
     confirm = questionary.confirm(
         f"Start converting {len(files_info)} file(s)?",
         default=True,
@@ -548,22 +568,9 @@ def _run(path: str, output: Optional[str], recursive: bool) -> None:
         )
 
         for info in files_info:
-            # Resolve output path
-            if recursive and input_path.is_dir():
-                rel = info.path.relative_to(input_path)
-                out_file = (output_dir / rel).with_suffix(fmt_def["extension"])
-                out_file.parent.mkdir(parents=True, exist_ok=True)
-            else:
-                out_file = output_dir / (info.path.stem + fmt_def["extension"])
-
-            # Avoid overwriting
-            counter = 1
-            base_stem = out_file.stem
-            while out_file.exists():
-                out_file = out_file.with_name(
-                    f"{base_stem}_{counter}{fmt_def['extension']}"
-                )
-                counter += 1
+            out_file = _resolve_output_path(
+                info, fmt_def, output_dir, input_path, recursive
+            )
 
             file_task = progress.add_task(
                 "",
@@ -635,3 +642,76 @@ def _run(path: str, output: Optional[str], recursive: bool) -> None:
                 padding=(1, 2),
             )
         )
+
+
+def _resolve_output_path(
+    info: MediaInfo,
+    fmt_def: dict,
+    output_dir: Path,
+    input_path: Path,
+    recursive: bool,
+) -> Path:
+    """Compute the output file path for a given input, avoiding overwrites."""
+    if recursive and input_path.is_dir():
+        rel = info.path.relative_to(input_path)
+        out_file = (output_dir / rel).with_suffix(fmt_def["extension"])
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+    else:
+        out_file = output_dir / (info.path.stem + fmt_def["extension"])
+
+    counter = 1
+    base_stem = out_file.stem
+    while out_file.exists():
+        out_file = out_file.with_name(f"{base_stem}_{counter}{fmt_def['extension']}")
+        counter += 1
+    return out_file
+
+
+def _display_dry_run_plan(
+    files_info: List[MediaInfo],
+    settings: ConvertSettings,
+    fmt_def: dict,
+    output_dir: Path,
+    input_path: Path,
+    recursive: bool,
+) -> None:
+    """Print what would happen without actually converting anything."""
+    table = Table(
+        box=box.ROUNDED,
+        border_style="bright_yellow",
+        header_style="bold bright_white on grey11",
+        title=" [DRY RUN] Conversion Plan ",
+        title_style="bold bright_yellow",
+    )
+    table.add_column("#", style="dim", width=4, justify="right")
+    table.add_column("Input", style="bright_white", max_width=35, no_wrap=True)
+    table.add_column("\u2192", style="dim", width=2, justify="center")
+    table.add_column("Output", style="bright_green", max_width=35, no_wrap=True)
+
+    for i, info in enumerate(files_info, 1):
+        out_file = _resolve_output_path(
+            info, fmt_def, output_dir, input_path, recursive
+        )
+        table.add_row(str(i), info.path.name, "\u2192", out_file.name)
+
+    console.print(table)
+    console.print()
+
+    console.print(
+        Panel(
+            "[bold bright_white]Sample ffmpeg command[/bold bright_white]",
+            border_style="bright_cyan",
+            padding=(0, 2),
+        )
+    )
+    sample_out = _resolve_output_path(
+        files_info[0], fmt_def, output_dir, input_path, recursive
+    )
+    cmd = build_command(files_info[0].path, sample_out, settings)
+    cmd_display = [c if " " not in c else f'"{c}"' for c in cmd]
+    console.print(f"  [dim]{' '.join(cmd_display)}[/dim]\n")
+
+    console.print(
+        "  [bright_yellow]No files were converted.[/bright_yellow] "
+        "Remove [bold]-n / --dry-run[/bold] to convert.\n"
+    )

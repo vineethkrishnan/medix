@@ -111,6 +111,9 @@ medix /path/to/videos/ -r
 
 # Specify output directory
 medix /path/to/videos/ -o /path/to/output/
+
+# Dry run — see what would happen without converting
+medix /path/to/videos/ --dry-run
 ```
 
 ### What Happens
@@ -123,6 +126,14 @@ medix /path/to/videos/ -o /path/to/output/
 6. Review the conversion plan and confirm.
 7. Watch per-file and overall progress bars in real time.
 
+### Dry Run
+
+Use `--dry-run` (or `-n`) to preview the conversion plan without writing any files. Medix will show you the file mapping and the exact ffmpeg command that would be executed:
+
+```bash
+medix /path/to/videos/ --dry-run
+```
+
 ### CLI Reference
 
 ```
@@ -133,6 +144,7 @@ Usage: medix [OPTIONS] PATH
 Options:
   -o, --output PATH  Output directory (default: <input>/converted/)
   -r, --recursive    Recurse into subdirectories
+  -n, --dry-run      Show what would be done without converting
   --version          Show version and exit
   -h, --help         Show help and exit
 ```
@@ -177,8 +189,23 @@ git clone https://github.com/vineethkrishnan/medix.git
 cd medix
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e .
+pip install -e ".[dev]"
 ```
+
+### Running Tests
+
+```bash
+# Run the full test suite
+pytest
+
+# With coverage report
+pytest --cov=medix --cov-report=term-missing
+
+# Run a specific test file
+pytest tests/test_converter.py
+```
+
+Tests cover all modules (converter, CLI, dependencies, formats) and run on every push across Python 3.9–3.13 on Linux, macOS, and Windows via CI.
 
 ### Re-generate demo screenshots
 
