@@ -37,7 +37,9 @@ def check_ffmpeg() -> bool:
     for cmd in ("ffmpeg", "ffprobe"):
         try:
             subprocess.run(
-                [cmd, "-version"], capture_output=True, check=True,
+                [cmd, "-version"],
+                capture_output=True,
+                check=True,
             )
         except (FileNotFoundError, subprocess.CalledProcessError):
             return False
@@ -47,9 +49,13 @@ def check_ffmpeg() -> bool:
 def probe_file(filepath: Path) -> Optional[MediaInfo]:
     try:
         cmd = [
-            "ffprobe", "-v", "quiet",
-            "-print_format", "json",
-            "-show_format", "-show_streams",
+            "ffprobe",
+            "-v",
+            "quiet",
+            "-print_format",
+            "json",
+            "-show_format",
+            "-show_streams",
             str(filepath),
         ]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)

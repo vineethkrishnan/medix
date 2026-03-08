@@ -1,7 +1,25 @@
 MEDIA_EXTENSIONS = {
-    ".vob", ".mp4", ".mkv", ".avi", ".mov", ".wmv", ".flv",
-    ".mpeg", ".mpg", ".ts", ".webm", ".m4v", ".3gp", ".ogv",
-    ".mts", ".m2ts", ".divx", ".asf", ".rm", ".rmvb", ".f4v",
+    ".vob",
+    ".mp4",
+    ".mkv",
+    ".avi",
+    ".mov",
+    ".wmv",
+    ".flv",
+    ".mpeg",
+    ".mpg",
+    ".ts",
+    ".webm",
+    ".m4v",
+    ".3gp",
+    ".ogv",
+    ".mts",
+    ".m2ts",
+    ".divx",
+    ".asf",
+    ".rm",
+    ".rmvb",
+    ".f4v",
 }
 
 OUTPUT_FORMATS = {

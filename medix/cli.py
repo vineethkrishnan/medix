@@ -168,12 +168,17 @@ def _abort() -> None:
     sys.exit(1)
 
 
-def _select(message: str, options: Dict[str, str], default: Optional[str] = None) -> str:
+def _select(
+    message: str, options: Dict[str, str], default: Optional[str] = None
+) -> str:
     choices = [
         questionary.Choice(title=f"{k:16s} {v}", value=k) for k, v in options.items()
     ]
     result = questionary.select(
-        message, choices=choices, style=PROMPT_STYLE, default=default,
+        message,
+        choices=choices,
+        style=PROMPT_STYLE,
+        default=default,
     ).ask()
     if result is None:
         _abort()
@@ -215,12 +220,15 @@ def select_source_formats(files: List[Path]) -> List[Path]:
 def select_output_format() -> str:
     choices = [
         questionary.Choice(
-            title=f"{name:6s} {fmt['description']}", value=name,
+            title=f"{name:6s} {fmt['description']}",
+            value=name,
         )
         for name, fmt in OUTPUT_FORMATS.items()
     ]
     result = questionary.select(
-        "Output format:", choices=choices, style=PROMPT_STYLE,
+        "Output format:",
+        choices=choices,
+        style=PROMPT_STYLE,
     ).ask()
     if result is None:
         _abort()
@@ -236,7 +244,9 @@ def configure_settings(format_name: str) -> ConvertSettings:
     )
 
     want_advanced = questionary.confirm(
-        "Configure advanced settings?", default=False, style=PROMPT_STYLE,
+        "Configure advanced settings?",
+        default=False,
+        style=PROMPT_STYLE,
     ).ask()
     if want_advanced is None:
         _abort()
@@ -300,18 +310,22 @@ def display_settings_summary(settings: ConvertSettings, file_count: int) -> None
     table.add_row("Files", str(file_count))
     table.add_row("Output Format", settings.output_format)
     table.add_row(
-        "Video Codec", VIDEO_CODECS.get(settings.video_codec, settings.video_codec),
+        "Video Codec",
+        VIDEO_CODECS.get(settings.video_codec, settings.video_codec),
     )
     table.add_row(
-        "Audio Codec", AUDIO_CODECS.get(settings.audio_codec, settings.audio_codec),
+        "Audio Codec",
+        AUDIO_CODECS.get(settings.audio_codec, settings.audio_codec),
     )
 
     if settings.video_codec != "copy":
         table.add_row(
-            "Resolution", RESOLUTIONS.get(settings.resolution, settings.resolution),
+            "Resolution",
+            RESOLUTIONS.get(settings.resolution, settings.resolution),
         )
         table.add_row(
-            "Frame Rate", FRAME_RATES.get(settings.frame_rate, settings.frame_rate),
+            "Frame Rate",
+            FRAME_RATES.get(settings.frame_rate, settings.frame_rate),
         )
         if settings.video_codec in ("libx264", "libx265"):
             table.add_row("Preset", settings.preset.title())
@@ -332,7 +346,9 @@ def display_settings_summary(settings: ConvertSettings, file_count: int) -> None
 
 @click.command(context_settings={"help_option_names": ["-h", "--help"]})
 @click.argument("path", type=click.Path(exists=True))
-@click.option("-o", "--output", type=click.Path(), default=None, help="Output directory.")
+@click.option(
+    "-o", "--output", type=click.Path(), default=None, help="Output directory."
+)
 @click.option("-r", "--recursive", is_flag=True, help="Recurse into subdirectories.")
 @click.version_option("1.0.0", prog_name="medix")
 def main(path: str, output: Optional[str], recursive: bool) -> None:
@@ -456,7 +472,6 @@ def _run(path: str, output: Optional[str], recursive: bool) -> None:
         TimeRemainingColumn(),
         console=console,
     ) as progress:
-
         overall_task = progress.add_task(
             "",
             total=len(files_info),
@@ -504,12 +519,14 @@ def _run(path: str, output: Optional[str], recursive: bool) -> None:
 
             if ok:
                 progress.update(
-                    file_task, status="[bright_green] OK [/bright_green]",
+                    file_task,
+                    status="[bright_green] OK [/bright_green]",
                 )
                 succeeded += 1
             else:
                 progress.update(
-                    file_task, status="[bright_red]FAIL[/bright_red]",
+                    file_task,
+                    status="[bright_red]FAIL[/bright_red]",
                 )
                 errors.append((info.path.name, err_msg))
                 failed += 1
