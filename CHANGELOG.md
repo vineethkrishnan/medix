@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.2.1...medix-v1.3.0) (2026-03-08)
+
+
+### Features
+
+* add --dry-run flag and comprehensive test suite (119 tests) ([a24b6e7](https://github.com/vineethkrishnan/medix/commit/a24b6e772e5d8aa3871033bf71dfa422f2a6f776))
+
+
+### Documentation
+
+* update CONTRIBUTING.md with test suite, ruff, and dry-run guidance ([9ecad6a](https://github.com/vineethkrishnan/medix/commit/9ecad6a554de1cc11f21d206357e4aa08e8b066c))
+
 ## [1.2.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.2.0...medix-v1.2.1) (2026-03-08)
 
 
