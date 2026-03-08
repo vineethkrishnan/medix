@@ -22,6 +22,7 @@ from rich.table import Table
 from rich.text import Text
 from rich.theme import Theme
 
+from . import __version__
 from .converter import (
     ConvertSettings,
     MediaInfo,
@@ -85,7 +86,7 @@ def display_banner() -> None:
             banner,
             border_style="bright_magenta",
             padding=(1, 4),
-            subtitle="[dim]v1.0.0[/dim]",
+            subtitle=f"[dim]v{__version__}[/dim]",
             subtitle_align="right",
         )
     )
@@ -357,7 +358,7 @@ def display_settings_summary(settings: ConvertSettings, file_count: int) -> None
     "-o", "--output", type=click.Path(), default=None, help="Output directory."
 )
 @click.option("-r", "--recursive", is_flag=True, help="Recurse into subdirectories.")
-@click.version_option("1.0.0", prog_name="medix")
+@click.version_option(__version__, prog_name="medix")
 def main(path: str, output: Optional[str], recursive: bool) -> None:
     """Medix - Convert media files between formats with style."""
     try:

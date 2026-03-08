@@ -1,58 +1,85 @@
 # Medix
 
 [![CI](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml/badge.svg)](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/medix)](https://pypi.org/project/medix/)
+[![Python](https://img.shields.io/pypi/pyversions/medix)](https://pypi.org/project/medix/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A fancy command-line media format converter powered by FFmpeg. Interactively choose source and target formats, tweak advanced encoding settings, and watch conversions fly with real-time progress bars.
 
+<p align="center">
+  <img src="assets/demo-banner.svg" width="700" alt="medix banner" />
+</p>
+
 ---
 
-## Minimum Requirements
+## Demo
+
+### File Discovery
+
+Medix scans your path and presents a clean table of all discovered media files with resolution, duration, and size.
+
+<p align="center">
+  <img src="assets/demo-files.svg" width="700" alt="discovered files table" />
+</p>
+
+### Conversion Plan & Progress
+
+Review your settings before starting, then watch per-file and overall progress in real time.
+
+<p align="center">
+  <img src="assets/demo-settings.svg" width="700" alt="conversion plan" />
+</p>
+
+<p align="center">
+  <img src="assets/demo-progress.svg" width="700" alt="conversion progress" />
+</p>
+
+### Auto-Install Prerequisites
+
+No FFmpeg? No problem. Medix detects your OS, finds a package manager, and offers to install it for you.
+
+<p align="center">
+  <img src="assets/demo-prereq.svg" width="700" alt="auto-install prerequisites" />
+</p>
+
+### Completion Summary
+
+<p align="center">
+  <img src="assets/demo-complete.svg" width="700" alt="conversion complete" />
+</p>
+
+---
+
+## Requirements
 
 | Dependency | Minimum Version | Check Command |
 |-----------|----------------|---------------|
 | **Python** | 3.9+ | `python3 --version` |
 | **FFmpeg** | 4.4+ | `ffmpeg -version` |
 | **ffprobe** | (bundled with FFmpeg) | `ffprobe -version` |
-| **pip** | 21.0+ | `pip --version` |
 
-> FFmpeg and ffprobe must be available in your `PATH`. Medix calls them as subprocesses — no Python bindings required.
+> **Note:** If FFmpeg is not installed, Medix will detect your system and offer to install it automatically via your package manager (Homebrew, APT, DNF, Pacman, winget, Chocolatey, and more).
 
 ### Supported Platforms
 
-- macOS 12+
-- Ubuntu 20.04+ / Debian 11+
-- Windows 10+ (with FFmpeg in PATH)
+- macOS 12+ (Homebrew, MacPorts)
+- Ubuntu 20.04+ / Debian 11+ (APT)
+- Fedora / RHEL (DNF, YUM)
+- Arch Linux (Pacman)
+- Windows 10+ (winget, Chocolatey, Scoop)
 
 ---
 
 ## Installation
 
-### 1. Install FFmpeg
-
-<details>
-<summary><strong>macOS</strong></summary>
+### From PyPI (recommended)
 
 ```bash
-brew install ffmpeg
+pip install medix
 ```
-</details>
 
-<details>
-<summary><strong>Ubuntu / Debian</strong></summary>
-
-```bash
-sudo apt update && sudo apt install ffmpeg
-```
-</details>
-
-<details>
-<summary><strong>Windows</strong></summary>
-
-Download from [ffmpeg.org](https://ffmpeg.org/download.html) and add the `bin/` folder to your system `PATH`.
-</details>
-
-### 2. Install Medix
+### From Source
 
 ```bash
 git clone https://github.com/vineethkrishnan/medix.git
@@ -88,17 +115,20 @@ medix /path/to/videos/ -o /path/to/output/
 
 ### What Happens
 
-1. Medix scans the path and lists discovered media files with metadata (resolution, duration, size).
-2. If multiple source formats exist, you pick which ones to convert.
-3. Choose an output format (MP4, MKV, WebM, MOV, AVI, TS).
-4. Optionally configure advanced settings — codec, resolution, frame rate, CRF, preset, bitrate.
-5. Review the conversion plan and confirm.
-6. Watch per-file and overall progress bars in real time.
+1. Medix checks for FFmpeg — if missing, it offers to install it automatically.
+2. Scans the path and lists discovered media files with metadata (resolution, duration, size).
+3. If multiple source formats exist, you pick which ones to convert.
+4. Choose an output format (MP4, MKV, WebM, MOV, AVI, TS).
+5. Optionally configure advanced settings — codec, resolution, frame rate, CRF, preset, bitrate.
+6. Review the conversion plan and confirm.
+7. Watch per-file and overall progress bars in real time.
 
 ### CLI Reference
 
 ```
 Usage: medix [OPTIONS] PATH
+
+  Medix - Convert media files between formats with style.
 
 Options:
   -o, --output PATH  Output directory (default: <input>/converted/)
@@ -148,6 +178,12 @@ cd medix
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
+```
+
+### Re-generate demo screenshots
+
+```bash
+python assets/generate_demos.py
 ```
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/) and [Release Please](https://github.com/googleapis/release-please) for automated versioning and changelog generation.

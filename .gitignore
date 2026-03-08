@@ -30,6 +30,9 @@ Thumbs.db
 htmlcov/
 .tox/
 
+# Linting
+.ruff_cache/
+
 # Distribution
 *.tar.gz
 *.zip
