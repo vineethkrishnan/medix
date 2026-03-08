@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.1.0...medix-v1.2.0) (2026-03-08)
+
+
+### Features
+
+* auto-detect and install ffmpeg prerequisites interactively ([207447c](https://github.com/vineethkrishnan/medix/commit/207447c6083c3a379a6446783a14f320fcac713e))
+
 ## [1.1.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.0.0...medix-v1.1.0) (2026-03-08)
 
 
