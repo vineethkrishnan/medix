@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.2.0...medix-v1.2.1) (2026-03-08)
+
+
+### Documentation
+
+* update README with demo screenshots, PyPI install, and auto-install docs ([269fd5d](https://github.com/vineethkrishnan/medix/commit/269fd5dc0b58339b41e60529de1dfd1e66696718))
+
 ## [1.2.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.1.0...medix-v1.2.0) (2026-03-08)
 
 
