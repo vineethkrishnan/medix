@@ -61,9 +61,7 @@ def detect_package_manager() -> Optional[PackageManager]:
 
     elif os_name == "linux":
         if _has("apt-get"):
-            return PackageManager(
-                "APT", "sudo", ["apt-get", "install", "-y", "ffmpeg"]
-            )
+            return PackageManager("APT", "sudo", ["apt-get", "install", "-y", "ffmpeg"])
         if _has("dnf"):
             return PackageManager("DNF", "sudo", ["dnf", "install", "-y", "ffmpeg"])
         if _has("yum"):
@@ -145,7 +143,9 @@ def get_manual_install_hint() -> str:
         hints.insert(0, "  Install Homebrew first: https://brew.sh")
         hints.append("  Then run: brew install ffmpeg")
     elif os_name == "linux":
-        hints.append("  Most distros: sudo apt install ffmpeg  (or your package manager)")
+        hints.append(
+            "  Most distros: sudo apt install ffmpeg  (or your package manager)"
+        )
     elif os_name == "windows":
         hints.append("  Or use: winget install Gyan.FFmpeg")
 

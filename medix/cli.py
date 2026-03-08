@@ -400,9 +400,7 @@ def _ensure_prerequisites() -> bool:
     ).ask()
 
     if not do_install:
-        console.print(
-            "\n[yellow]Skipped.[/yellow] Install manually to continue:\n"
-        )
+        console.print("\n[yellow]Skipped.[/yellow] Install manually to continue:\n")
         console.print(f"  [dim]{cmd_str}[/dim]")
         return False
 
@@ -427,7 +425,9 @@ def _ensure_prerequisites() -> bool:
         )
         return False
 
-    console.print("[bold bright_green]ffmpeg installed successfully![/bold bright_green]\n")
+    console.print(
+        "[bold bright_green]ffmpeg installed successfully![/bold bright_green]\n"
+    )
     return True
 
 
