@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.0.0...medix-v1.1.0) (2026-03-08)
+
+
+### Features
+
+* initial release of medix CLI media converter ([eecc674](https://github.com/vineethkrishnan/medix/commit/eecc6746eec827c92408f527aba3bdce3c36e3b4))
+
 ## [1.0.0](https://github.com/vineethkrishnan/medix/releases/tag/v1.0.0) (2026-03-08)
 
 ### Features
