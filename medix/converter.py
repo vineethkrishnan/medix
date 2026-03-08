@@ -34,16 +34,9 @@ class ConvertSettings:
 
 
 def check_ffmpeg() -> bool:
-    for cmd in ("ffmpeg", "ffprobe"):
-        try:
-            subprocess.run(
-                [cmd, "-version"],
-                capture_output=True,
-                check=True,
-            )
-        except (FileNotFoundError, subprocess.CalledProcessError):
-            return False
-    return True
+    from .dependencies import find_missing_tools
+
+    return len(find_missing_tools()) == 0
 
 
 def probe_file(filepath: Path) -> Optional[MediaInfo]:

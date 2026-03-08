@@ -25,9 +25,16 @@ from rich.theme import Theme
 from .converter import (
     ConvertSettings,
     MediaInfo,
-    check_ffmpeg,
     convert_file,
     probe_file,
+)
+from .dependencies import (
+    detect_package_manager,
+    find_missing_tools,
+    get_manual_install_hint,
+    get_platform_info,
+    install_ffmpeg,
+    verify_installation,
 )
 from .formats import (
     AUDIO_BITRATES,
@@ -360,14 +367,74 @@ def main(path: str, output: Optional[str], recursive: bool) -> None:
         sys.exit(130)
 
 
+def _ensure_prerequisites() -> bool:
+    """Check for ffmpeg/ffprobe; offer to install if missing. Returns True if ready."""
+    missing = find_missing_tools()
+    if not missing:
+        return True
+
+    names = ", ".join(t.name for t in missing)
+    os_name, arch = get_platform_info()
+    console.print(
+        f"[bold red]Missing prerequisites:[/bold red] {names}\n"
+        f"  [dim]System: {os_name} ({arch})[/dim]"
+    )
+
+    pm = detect_package_manager()
+    if pm is None:
+        console.print(
+            "\n[yellow]No supported package manager detected.[/yellow]\n"
+            "Please install ffmpeg manually:\n"
+        )
+        console.print(f"[dim]{get_manual_install_hint()}[/dim]")
+        return False
+
+    cmd_str = " ".join(pm.install_cmd())
+    console.print(f"\n  [bright_cyan]Detected package manager:[/bright_cyan] {pm.name}")
+    console.print(f"  [dim]Command: {cmd_str}[/dim]\n")
+
+    do_install = questionary.confirm(
+        f"Install ffmpeg via {pm.name}?",
+        default=True,
+        style=PROMPT_STYLE,
+    ).ask()
+
+    if not do_install:
+        console.print(
+            "\n[yellow]Skipped.[/yellow] Install manually to continue:\n"
+        )
+        console.print(f"  [dim]{cmd_str}[/dim]")
+        return False
+
+    console.print()
+    with console.status(
+        f"[bright_magenta]Installing ffmpeg via {pm.name}…[/bright_magenta]",
+        spinner="dots",
+    ):
+        ok, output_text = install_ffmpeg(pm)
+
+    if not ok:
+        console.print(f"[bold red]Installation failed.[/bold red]\n{output_text}")
+        console.print(f"\n[dim]Try running manually: {cmd_str}[/dim]")
+        return False
+
+    still_missing = verify_installation()
+    if still_missing:
+        names = ", ".join(t.name for t in still_missing)
+        console.print(
+            f"[bold red]Still missing after install:[/bold red] {names}\n"
+            "[dim]You may need to restart your terminal or add ffmpeg to PATH.[/dim]"
+        )
+        return False
+
+    console.print("[bold bright_green]ffmpeg installed successfully![/bold bright_green]\n")
+    return True
+
+
 def _run(path: str, output: Optional[str], recursive: bool) -> None:
     display_banner()
 
-    if not check_ffmpeg():
-        console.print(
-            "[bold red]Error:[/bold red] ffmpeg and ffprobe must be installed and in PATH."
-        )
-        console.print("[dim]Install: https://ffmpeg.org/download.html[/dim]")
+    if not _ensure_prerequisites():
         sys.exit(1)
 
     input_path = Path(path).resolve()
