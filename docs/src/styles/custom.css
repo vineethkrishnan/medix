@@ -1,0 +1,39 @@
+/* Medix brand accent — soft violet with muted neutrals */
+:root {
+  --sl-color-accent-low: #2d1b4e;
+  --sl-color-accent: #8b5cf6;
+  --sl-color-accent-high: #c4b5fd;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #e5e7eb;
+  --sl-color-gray-2: #c0c4cc;
+  --sl-color-gray-3: #8b8f99;
+  --sl-color-gray-4: #545861;
+  --sl-color-gray-5: #353841;
+  --sl-color-gray-6: #23262e;
+  --sl-color-black: #17181c;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #ede9fe;
+  --sl-color-accent: #7c3aed;
+  --sl-color-accent-high: #4c1d95;
+  --sl-color-white: #17181c;
+  --sl-color-gray-1: #23262e;
+  --sl-color-gray-2: #353841;
+  --sl-color-gray-3: #545861;
+  --sl-color-gray-4: #8b8f99;
+  --sl-color-gray-5: #c0c4cc;
+  --sl-color-gray-6: #eff0f4;
+  --sl-color-gray-7: #f6f7f9;
+  --sl-color-black: #ffffff;
+}
+
+/* Slightly tighter heading rhythm */
+.sl-markdown-content h2 {
+  margin-top: 2.25rem;
+}
+
+/* Rounded code blocks */
+.expressive-code .frame {
+  border-radius: 10px;
+}
