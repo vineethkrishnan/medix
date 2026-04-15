@@ -35,7 +35,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/vineethkrishnan/medix"
+Homepage = "https://medix.vineethnk.in"
+Documentation = "https://medix.vineethnk.in"
 Repository = "https://github.com/vineethkrishnan/medix"
 Changelog = "https://github.com/vineethkrishnan/medix/blob/main/CHANGELOG.md"
 Issues = "https://github.com/vineethkrishnan/medix/issues"
