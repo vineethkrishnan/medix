@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.3.0...medix-v1.3.1) (2026-04-15)
+
+
+### Bug Fixes
+
+* **ci:** hardcode --branch=main so deploys land on production URL ([ed2e95e](https://github.com/vineethkrishnan/medix/commit/ed2e95ee00f4505a0188d8d137df58773f64dfa7))
+
+
+### Documentation
+
+* astro starlight site + cloudflare pages deploy ([#5](https://github.com/vineethkrishnan/medix/issues/5)) ([0f71eb0](https://github.com/vineethkrishnan/medix/commit/0f71eb033df110d3b5e9e53b1a65a0061cfafd51))
+* use correct medix-5bc.pages.dev URL everywhere ([a3a9054](https://github.com/vineethkrishnan/medix/commit/a3a90544bf113f97e8b1fac3ec097434405eeba5))
+
 ## [1.3.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.2.1...medix-v1.3.0) (2026-03-08)
 
 
