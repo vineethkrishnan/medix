@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.3.1...medix-v1.4.0) (2026-04-15)
+
+
+### Features
+
+* **pyproject:** add documentation url and point homepage to docs site ([#8](https://github.com/vineethkrishnan/medix/issues/8)) ([5dd0301](https://github.com/vineethkrishnan/medix/commit/5dd03017ef1d7ccce3257adaffe7bca120695ebf))
+
 ## [1.3.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.3.0...medix-v1.3.1) (2026-04-15)
 
 
