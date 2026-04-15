@@ -9,18 +9,9 @@ export default defineConfig({
       description:
         'A fancy command-line media format converter powered by FFmpeg.',
       tagline: 'Batch media conversion with a polished terminal UI.',
-      social: [
-        {
-          icon: 'github',
-          label: 'GitHub',
-          href: 'https://github.com/vineethkrishnan/medix',
-        },
-        {
-          icon: 'seti:python',
-          label: 'PyPI',
-          href: 'https://pypi.org/project/medix/',
-        },
-      ],
+      social: {
+        github: 'https://github.com/vineethkrishnan/medix',
+      },
       editLink: {
         baseUrl: 'https://github.com/vineethkrishnan/medix/edit/main/docs/',
       },
@@ -36,47 +27,27 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Introduction',
-          items: [
-            { label: 'What is Medix?', link: '/' },
-            { label: 'Features', link: '/features/' },
-          ],
+          items: [{ label: 'Features', slug: 'features' }],
         },
         {
           label: 'Getting Started',
-          items: [
-            { label: 'Requirements', link: '/getting-started/requirements/' },
-            { label: 'Installation', link: '/getting-started/installation/' },
-            { label: 'Quick Start', link: '/getting-started/quick-start/' },
-          ],
+          autogenerate: { directory: 'getting-started' },
         },
         {
           label: 'Guides',
-          items: [
-            { label: 'CLI Usage', link: '/guides/cli-usage/' },
-            { label: 'Dry Run Mode', link: '/guides/dry-run/' },
-            { label: 'Formats & Codecs', link: '/guides/formats/' },
-            { label: 'Advanced Settings', link: '/guides/advanced-settings/' },
-            { label: 'FFmpeg Auto-Install', link: '/guides/ffmpeg-setup/' },
-          ],
+          autogenerate: { directory: 'guides' },
         },
         {
           label: 'Reference',
-          items: [
-            { label: 'CLI Reference', link: '/reference/cli/' },
-            { label: 'Supported Formats', link: '/reference/supported-formats/' },
-          ],
+          autogenerate: { directory: 'reference' },
         },
         {
           label: 'Development',
-          items: [
-            { label: 'Contributing', link: '/development/contributing/' },
-            { label: 'Testing', link: '/development/testing/' },
-            { label: 'Release Process', link: '/development/releases/' },
-          ],
+          autogenerate: { directory: 'development' },
         },
         {
           label: 'Roadmap',
-          link: '/roadmap/',
+          slug: 'roadmap',
           badge: { text: 'Upcoming', variant: 'tip' },
         },
       ],
