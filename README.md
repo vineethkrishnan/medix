@@ -1,7 +1,7 @@
 # Medix
 
 [![CI](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml/badge.svg)](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-medix.pages.dev-8b5cf6)](https://medix.pages.dev)
+[![Docs](https://img.shields.io/badge/docs-medix-5bc.pages.dev-8b5cf6)](https://medix-5bc.pages.dev)
 [![PyPI](https://img.shields.io/pypi/v/medix)](https://pypi.org/project/medix/)
 [![Python](https://img.shields.io/pypi/pyversions/medix)](https://pypi.org/project/medix/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -12,7 +12,7 @@ A fancy command-line media format converter powered by FFmpeg. Interactively cho
   <img src="assets/demo-banner.svg" width="700" alt="medix banner" />
 </p>
 
-> **📖 Full documentation:** [medix.pages.dev](https://medix.pages.dev) — installation, guides, CLI reference, and [roadmap](https://medix.pages.dev/roadmap/).
+> **📖 Full documentation:** [medix-5bc.pages.dev](https://medix-5bc.pages.dev) — installation, guides, CLI reference, and [roadmap](https://medix-5bc.pages.dev/roadmap/).
 
 ---
 
@@ -76,7 +76,7 @@ No FFmpeg? No problem. Medix detects your OS, finds a package manager, and offer
 
 ## Installation
 
-Medix is on [PyPI](https://pypi.org/project/medix/) and mirrored on [libraries.io](https://libraries.io/pypi/medix). Pick whichever workflow fits you best — the [full installation guide](https://medix.pages.dev/getting-started/installation/) covers every option.
+Medix is on [PyPI](https://pypi.org/project/medix/) and mirrored on [libraries.io](https://libraries.io/pypi/medix). Pick whichever workflow fits you best — the [full installation guide](https://medix-5bc.pages.dev/getting-started/installation/) covers every option.
 
 ### From PyPI (recommended)
 
@@ -121,7 +121,7 @@ medix --version
 
 ### FFmpeg
 
-Medix needs FFmpeg at runtime, but you don't have to install it first — on first run it detects your platform and offers to install it via Homebrew, APT, DNF, Pacman, winget, Chocolatey, or Scoop. See the [FFmpeg Auto-Install guide](https://medix.pages.dev/guides/ffmpeg-setup/) for manual install commands.
+Medix needs FFmpeg at runtime, but you don't have to install it first — on first run it detects your platform and offers to install it via Homebrew, APT, DNF, Pacman, winget, Chocolatey, or Scoop. See the [FFmpeg Auto-Install guide](https://medix-5bc.pages.dev/guides/ffmpeg-setup/) for manual install commands.
 
 ---
 
@@ -243,21 +243,21 @@ python assets/generate_demos.py
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/) and [Release Please](https://github.com/googleapis/release-please) for automated versioning and changelog generation.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and the [Release Process docs](https://medix.pages.dev/development/releases/) for how releases are cut.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and the [Release Process docs](https://medix-5bc.pages.dev/development/releases/) for how releases are cut.
 
 ---
 
 ## Documentation
 
-The full documentation site is at **[medix.pages.dev](https://medix.pages.dev)** — built with [Astro Starlight](https://starlight.astro.build/), searchable via Pagefind, and deployed to Cloudflare Pages.
+The full documentation site is at **[medix-5bc.pages.dev](https://medix-5bc.pages.dev)** — built with [Astro Starlight](https://starlight.astro.build/), searchable via Pagefind, and deployed to Cloudflare Pages.
 
 | Section | What's there |
 |---------|--------------|
-| [Getting Started](https://medix.pages.dev/getting-started/installation/) | Requirements, installation, quick start |
-| [Guides](https://medix.pages.dev/guides/cli-usage/) | CLI usage, dry-run, formats, advanced settings, FFmpeg setup |
-| [Reference](https://medix.pages.dev/reference/cli/) | Complete CLI reference and supported formats matrix |
-| [Development](https://medix.pages.dev/development/contributing/) | Contributing, testing, release process |
-| [Roadmap](https://medix.pages.dev/roadmap/) | What's coming in v1.4, v1.5, v1.6, and v2.0 |
+| [Getting Started](https://medix-5bc.pages.dev/getting-started/installation/) | Requirements, installation, quick start |
+| [Guides](https://medix-5bc.pages.dev/guides/cli-usage/) | CLI usage, dry-run, formats, advanced settings, FFmpeg setup |
+| [Reference](https://medix-5bc.pages.dev/reference/cli/) | Complete CLI reference and supported formats matrix |
+| [Development](https://medix-5bc.pages.dev/development/contributing/) | Contributing, testing, release process |
+| [Roadmap](https://medix-5bc.pages.dev/roadmap/) | What's coming in v1.4, v1.5, v1.6, and v2.0 |
 
 To preview the docs locally:
 
@@ -271,7 +271,7 @@ npm run dev
 
 ## Roadmap
 
-Highlights from the [full roadmap](https://medix.pages.dev/roadmap/):
+Highlights from the [full roadmap](https://medix-5bc.pages.dev/roadmap/):
 
 - **v1.4** — named presets, `.medixrc` config file, non-interactive mode, JSON output, shell completion
 - **v1.5** — metadata/subtitle preservation, hardware acceleration (VideoToolbox / NVENC / QuickSync / VAAPI), two-pass encoding, HDR tone-mapping, thumbnails

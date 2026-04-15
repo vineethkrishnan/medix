@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://medix.pages.dev',
+  site: 'https://medix-5bc.pages.dev',
   integrations: [
     starlight({
       title: 'Medix',
