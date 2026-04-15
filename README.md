@@ -1,6 +1,7 @@
 # Medix
 
 [![CI](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml/badge.svg)](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-medix.pages.dev-8b5cf6)](https://medix.pages.dev)
 [![PyPI](https://img.shields.io/pypi/v/medix)](https://pypi.org/project/medix/)
 [![Python](https://img.shields.io/pypi/pyversions/medix)](https://pypi.org/project/medix/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -10,6 +11,8 @@ A fancy command-line media format converter powered by FFmpeg. Interactively cho
 <p align="center">
   <img src="assets/demo-banner.svg" width="700" alt="medix banner" />
 </p>
+
+> **📖 Full documentation:** [medix.pages.dev](https://medix.pages.dev) — installation, guides, CLI reference, and [roadmap](https://medix.pages.dev/roadmap/).
 
 ---
 
@@ -73,13 +76,21 @@ No FFmpeg? No problem. Medix detects your OS, finds a package manager, and offer
 
 ## Installation
 
+Medix is on [PyPI](https://pypi.org/project/medix/) and mirrored on [libraries.io](https://libraries.io/pypi/medix). Pick whichever workflow fits you best — the [full installation guide](https://medix.pages.dev/getting-started/installation/) covers every option.
+
 ### From PyPI (recommended)
 
 ```bash
 pip install medix
 ```
 
-### From Source
+### With pipx (isolated global install)
+
+```bash
+pipx install medix
+```
+
+### From source
 
 ```bash
 git clone https://github.com/vineethkrishnan/medix.git
@@ -89,11 +100,28 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -e .
 ```
 
-Verify:
+### From a Git tag or branch directly
+
+```bash
+pip install "git+https://github.com/vineethkrishnan/medix.git@main"
+```
+
+### As a dependency in `pyproject.toml`
+
+```toml
+[project]
+dependencies = ["medix>=1.3.0"]
+```
+
+### Verify
 
 ```bash
 medix --version
 ```
+
+### FFmpeg
+
+Medix needs FFmpeg at runtime, but you don't have to install it first — on first run it detects your platform and offers to install it via Homebrew, APT, DNF, Pacman, winget, Chocolatey, or Scoop. See the [FFmpeg Auto-Install guide](https://medix.pages.dev/guides/ffmpeg-setup/) for manual install commands.
 
 ---
 
@@ -215,7 +243,42 @@ python assets/generate_demos.py
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/) and [Release Please](https://github.com/googleapis/release-please) for automated versioning and changelog generation.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and the [Release Process docs](https://medix.pages.dev/development/releases/) for how releases are cut.
+
+---
+
+## Documentation
+
+The full documentation site is at **[medix.pages.dev](https://medix.pages.dev)** — built with [Astro Starlight](https://starlight.astro.build/), searchable via Pagefind, and deployed to Cloudflare Pages.
+
+| Section | What's there |
+|---------|--------------|
+| [Getting Started](https://medix.pages.dev/getting-started/installation/) | Requirements, installation, quick start |
+| [Guides](https://medix.pages.dev/guides/cli-usage/) | CLI usage, dry-run, formats, advanced settings, FFmpeg setup |
+| [Reference](https://medix.pages.dev/reference/cli/) | Complete CLI reference and supported formats matrix |
+| [Development](https://medix.pages.dev/development/contributing/) | Contributing, testing, release process |
+| [Roadmap](https://medix.pages.dev/roadmap/) | What's coming in v1.4, v1.5, v1.6, and v2.0 |
+
+To preview the docs locally:
+
+```bash
+cd docs
+npm install
+npm run dev
+```
+
+---
+
+## Roadmap
+
+Highlights from the [full roadmap](https://medix.pages.dev/roadmap/):
+
+- **v1.4** — named presets, `.medixrc` config file, non-interactive mode, JSON output, shell completion
+- **v1.5** — metadata/subtitle preservation, hardware acceleration (VideoToolbox / NVENC / QuickSync / VAAPI), two-pass encoding, HDR tone-mapping, thumbnails
+- **v1.6** — resume support, parallel encoding, watch mode, smart skip
+- **v2.0** — stable Python API, plugin system, TUI mode
+
+Vote on items or suggest new ones on the [issue tracker](https://github.com/vineethkrishnan/medix/issues).
 
 ---
 

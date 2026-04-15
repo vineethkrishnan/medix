@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 180" width="700" height="180">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d1b4e"/>
+      <stop offset="100%" stop-color="#17181c"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="180" rx="14" fill="url(#g)"/>
+  <text x="350" y="90" text-anchor="middle" font-family="-apple-system, SF Mono, Menlo, monospace" font-size="56" font-weight="800" fill="#c4b5fd">medix</text>
+  <text x="350" y="128" text-anchor="middle" font-family="-apple-system, SF Mono, Menlo, monospace" font-size="16" fill="#8b8f99">media conversion, made fancy</text>
+</svg>

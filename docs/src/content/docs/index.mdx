@@ -1,0 +1,82 @@
+---
+title: Medix
+description: A fancy command-line media format converter powered by FFmpeg.
+template: splash
+hero:
+  tagline: Batch media conversion with a polished terminal UI, real-time progress, and zero config.
+  image:
+    alt: Medix banner
+    file: ../../assets/demo-banner.svg
+  actions:
+    - text: Get Started
+      link: /getting-started/installation/
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/vineethkrishnan/medix
+      icon: external
+      variant: minimal
+    - text: Install from PyPI
+      link: https://pypi.org/project/medix/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Why Medix?
+
+Medix wraps FFmpeg in an interactive CLI that makes batch conversion actually
+pleasant. Point it at a file or a folder, pick an output format, and watch the
+progress bars fly.
+
+<CardGrid stagger>
+  <Card title="Interactive-first" icon="rocket">
+    Questionary-powered prompts guide you through source filtering, format
+    selection, and advanced encoding tuning.
+  </Card>
+  <Card title="Zero config" icon="setting">
+    No dotfiles, no YAML. All choices happen at runtime. Sensible defaults
+    per output format.
+  </Card>
+  <Card title="Auto-install FFmpeg" icon="puzzle">
+    Detects your OS and offers to install FFmpeg via Homebrew, APT, DNF,
+    Pacman, winget, Chocolatey, or Scoop.
+  </Card>
+  <Card title="Dry run first" icon="approve-check">
+    Preview the exact ffmpeg commands before anything touches disk with
+    `--dry-run`.
+  </Card>
+  <Card title="Progress you trust" icon="bars">
+    Per-file and overall progress bars with ETA, powered by Rich.
+  </Card>
+  <Card title="Safe by default" icon="seti:lock">
+    Output filename collisions get auto-numbered. Nothing is overwritten
+    without your say-so.
+  </Card>
+</CardGrid>
+
+## Jump in
+
+<CardGrid>
+  <LinkCard
+    title="Install Medix"
+    description="pip, pipx, from source, or dev mode."
+    href="/getting-started/installation/"
+  />
+  <LinkCard
+    title="Quick Start"
+    description="Convert your first file in 30 seconds."
+    href="/getting-started/quick-start/"
+  />
+  <LinkCard
+    title="CLI Reference"
+    description="Every flag, argument, and exit code."
+    href="/reference/cli/"
+  />
+  <LinkCard
+    title="Roadmap"
+    description="What's coming next in Medix."
+    href="/roadmap/"
+  />
+</CardGrid>
