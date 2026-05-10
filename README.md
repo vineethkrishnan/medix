@@ -1,7 +1,7 @@
 # Medix
 
 [![CI](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml/badge.svg)](https://github.com/vineethkrishnan/medix/actions/workflows/ci.yml)
-[![Docs](https://img.shields.io/badge/docs-medix.vineethnk.in-8b5cf6)](https://medix.vineethnk.in)
+[![Docs](https://img.shields.io/badge/docs-medix.vinelabs.de-8b5cf6)](https://medix.vinelabs.de)
 [![PyPI](https://img.shields.io/pypi/v/medix)](https://pypi.org/project/medix/)
 [![Python](https://img.shields.io/pypi/pyversions/medix)](https://pypi.org/project/medix/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -12,7 +12,7 @@ A fancy command-line media format converter powered by FFmpeg. Interactively cho
   <img src="assets/demo-banner.svg" width="700" alt="medix banner" />
 </p>
 
-> **📖 Full documentation:** [medix.vineethnk.in](https://medix.vineethnk.in) — installation, guides, CLI reference, and [roadmap](https://medix.vineethnk.in/roadmap/).
+> **📖 Full documentation:** [medix.vinelabs.de](https://medix.vinelabs.de) — installation, guides, CLI reference, and [roadmap](https://medix.vinelabs.de/roadmap/).
 
 ---
 
@@ -76,7 +76,7 @@ No FFmpeg? No problem. Medix detects your OS, finds a package manager, and offer
 
 ## Installation
 
-Medix is on [PyPI](https://pypi.org/project/medix/) and mirrored on [libraries.io](https://libraries.io/pypi/medix). Pick whichever workflow fits you best — the [full installation guide](https://medix.vineethnk.in/getting-started/installation/) covers every option.
+Medix is on [PyPI](https://pypi.org/project/medix/) and mirrored on [libraries.io](https://libraries.io/pypi/medix). Pick whichever workflow fits you best — the [full installation guide](https://medix.vinelabs.de/getting-started/installation/) covers every option.
 
 ### From PyPI (recommended)
 
@@ -121,7 +121,7 @@ medix --version
 
 ### FFmpeg
 
-Medix needs FFmpeg at runtime, but you don't have to install it first — on first run it detects your platform and offers to install it via Homebrew, APT, DNF, Pacman, winget, Chocolatey, or Scoop. See the [FFmpeg Auto-Install guide](https://medix.vineethnk.in/guides/ffmpeg-setup/) for manual install commands.
+Medix needs FFmpeg at runtime, but you don't have to install it first — on first run it detects your platform and offers to install it via Homebrew, APT, DNF, Pacman, winget, Chocolatey, or Scoop. See the [FFmpeg Auto-Install guide](https://medix.vinelabs.de/guides/ffmpeg-setup/) for manual install commands.
 
 ---
 
@@ -243,21 +243,21 @@ python assets/generate_demos.py
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/) and [Release Please](https://github.com/googleapis/release-please) for automated versioning and changelog generation.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and the [Release Process docs](https://medix.vineethnk.in/development/releases/) for how releases are cut.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and the [Release Process docs](https://medix.vinelabs.de/development/releases/) for how releases are cut.
 
 ---
 
 ## Documentation
 
-The full documentation site is at **[medix.vineethnk.in](https://medix.vineethnk.in)** — built with [Astro Starlight](https://starlight.astro.build/), searchable via Pagefind, and deployed to Cloudflare Pages.
+The full documentation site is at **[medix.vinelabs.de](https://medix.vinelabs.de)** — built with [Astro Starlight](https://starlight.astro.build/), searchable via Pagefind, and deployed to Cloudflare Pages.
 
 | Section | What's there |
 |---------|--------------|
-| [Getting Started](https://medix.vineethnk.in/getting-started/installation/) | Requirements, installation, quick start |
-| [Guides](https://medix.vineethnk.in/guides/cli-usage/) | CLI usage, dry-run, formats, advanced settings, FFmpeg setup |
-| [Reference](https://medix.vineethnk.in/reference/cli/) | Complete CLI reference and supported formats matrix |
-| [Development](https://medix.vineethnk.in/development/contributing/) | Contributing, testing, release process |
-| [Roadmap](https://medix.vineethnk.in/roadmap/) | What's coming in v1.4, v1.5, v1.6, and v2.0 |
+| [Getting Started](https://medix.vinelabs.de/getting-started/installation/) | Requirements, installation, quick start |
+| [Guides](https://medix.vinelabs.de/guides/cli-usage/) | CLI usage, dry-run, formats, advanced settings, FFmpeg setup |
+| [Reference](https://medix.vinelabs.de/reference/cli/) | Complete CLI reference and supported formats matrix |
+| [Development](https://medix.vinelabs.de/development/contributing/) | Contributing, testing, release process |
+| [Roadmap](https://medix.vinelabs.de/roadmap/) | What's coming in v1.4, v1.5, v1.6, and v2.0 |
 
 To preview the docs locally:
 
@@ -271,7 +271,7 @@ npm run dev
 
 ## Roadmap
 
-Highlights from the [full roadmap](https://medix.vineethnk.in/roadmap/):
+Highlights from the [full roadmap](https://medix.vinelabs.de/roadmap/):
 
 - **v1.4** — named presets, `.medixrc` config file, non-interactive mode, JSON output, shell completion
 - **v1.5** — metadata/subtitle preservation, hardware acceleration (VideoToolbox / NVENC / QuickSync / VAAPI), two-pass encoding, HDR tone-mapping, thumbnails
