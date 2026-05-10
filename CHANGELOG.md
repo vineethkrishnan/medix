@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.4.0...medix-v1.4.1) (2026-05-10)
+
+
+### Documentation
+
+* update domain references to vinelabs.de ([aceee9f](https://github.com/vineethkrishnan/medix/commit/aceee9f302ae203cfe66c3a6c8accd5182781ebe))
+
 ## [1.4.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.3.1...medix-v1.4.0) (2026-04-15)
 
 
