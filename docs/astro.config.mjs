@@ -9,9 +9,13 @@ export default defineConfig({
       description:
         'A fancy command-line media format converter powered by FFmpeg.',
       tagline: 'Batch media conversion with a polished terminal UI.',
-      social: {
-        github: 'https://github.com/vineethkrishnan/medix',
-      },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/vineethkrishnan/medix',
+        },
+      ],
       editLink: {
         baseUrl: 'https://github.com/vineethkrishnan/medix/edit/main/docs/',
       },
