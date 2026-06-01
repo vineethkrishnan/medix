@@ -179,6 +179,39 @@ Options:
 
 ---
 
+## Local GUI
+
+Prefer point-and-click? Medix ships an optional local web app, `medix-gui`, with a Material Design interface. It drives the same FFmpeg engine as the CLI and runs entirely on your machine, bound to `127.0.0.1` (single-user, no upload, no login).
+
+```bash
+medix-gui                 # serve at http://127.0.0.1:8756/ and open the browser
+medix-gui --port 9000     # use a specific port
+medix-gui --no-browser    # start without opening a browser
+```
+
+Pick a file or folder (native OS file picker), scan, tune output settings, and watch live per-file progress. A History tab shows past conversions filtered by time window (24h / 7d / 30d / all), stored locally under your config directory.
+
+### Run it as a background daemon
+
+```bash
+medix-gui start           # run detached in the background
+medix-gui status          # show running state, pid, and port
+medix-gui stop            # stop the background process
+```
+
+### Auto-start at login (macOS)
+
+Install a launchd service so the GUI is always available and survives reboots:
+
+```bash
+medix-gui install-service     # writes a LaunchAgent and loads it
+medix-gui uninstall-service   # unload and remove it
+```
+
+See the [Local GUI guide](https://medix.vinelabs.de/guides/gui/) for the full walkthrough and screenshots.
+
+---
+
 ## Supported Formats
 
 ### Input (20+)

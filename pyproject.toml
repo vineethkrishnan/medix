@@ -51,9 +51,13 @@ dev = [
 [tool.setuptools.packages.find]
 include = ["medix*"]
 
+[tool.setuptools.package-data]
+medix = ["web/*.html", "web/*.css", "web/*.js"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --tb=short"
 
 [project.scripts]
 medix = "medix.cli:main"
+medix-gui = "medix.gui:main"
