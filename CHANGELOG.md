@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.5.0...medix-v1.5.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* **docs:** update starlight social config to v0.33+ array syntax ([#17](https://github.com/vineethkrishnan/medix/issues/17)) ([79e4fe3](https://github.com/vineethkrishnan/medix/commit/79e4fe3414d6f4826f4c350dd4be46bccf2fa215))
+
 ## [1.5.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.4.1...medix-v1.5.0) (2026-06-01)
 
 
