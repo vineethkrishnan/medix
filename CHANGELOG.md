@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/vineethkrishnan/medix/compare/medix-v1.4.1...medix-v1.5.0) (2026-06-01)
+
+
+### Features
+
+* **gui:** add local Material Design web GUI with history and daemon mode ([#14](https://github.com/vineethkrishnan/medix/issues/14)) ([b3e35c2](https://github.com/vineethkrishnan/medix/commit/b3e35c2a442ef3ce70ec3a730174389fefae91b3))
+
 ## [1.4.1](https://github.com/vineethkrishnan/medix/compare/medix-v1.4.0...medix-v1.4.1) (2026-05-10)
 
 
