@@ -230,7 +230,7 @@ class TestGetManualInstallHint:
     @patch("medix.dependencies.get_platform_info", return_value=("haiku", "x86_64"))
     def test_unknown_os_hint(self, _):
         hint = get_manual_install_hint()
-        assert "ffmpeg.org" in hint
+        assert hint.strip() == "Download: https://ffmpeg.org/download.html"
 
 
 # ── verify_installation ───────────────────────────────────────────────
