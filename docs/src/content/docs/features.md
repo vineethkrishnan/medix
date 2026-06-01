@@ -18,6 +18,14 @@ Medix walks you through conversion via a series of styled prompts:
 6. **Progress** — per-file and overall progress bars with live ETA.
 7. **Summary** — success/failure counts and error details.
 
+## Local GUI
+
+Prefer point-and-click? Run `medix-gui` to launch a local Material Design web
+app on `127.0.0.1`. Pick a file or folder, scan, tweak settings, and watch live
+per-file progress, plus a browsable conversion history filtered by time window.
+Files stay on your machine, with no upload and no login. See the
+[Local GUI guide](/guides/gui/).
+
 ## Batch conversion
 
 - Convert a single file, a directory, or a directory tree (`-r`).
