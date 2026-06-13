@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://medix.vinelabs.de',
+  site: 'https://medix.vinelab.in',
   integrations: [
     starlight({
       title: 'Medix',
